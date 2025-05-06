@@ -1,0 +1,21 @@
+
+<div class="task-item">
+  <h3>{{ task.title }}</h3>
+  @if(task.description) {
+    <p><strong>Опис:</strong> {{ task.description }}</p>
+  }
+  <p><strong>Виконавець:</strong> {{ task.assignee }}</p>
+  <p><strong>Дата виконання:</strong> {{ task.dueDate| date:'d.MM.yyyy'}}</p>
+  <p>Статус: {{ task.status | taskStatus }}</p>
+
+
+  <div class="select-status">
+    <select (change)="updateStatus($event)">
+      <option [value]="TaskStatus.TODO" [selected]="task.status === TaskStatus.TODO">🧠 До роботи</option>
+      <option [value]="TaskStatus.IN_PROGRESS" [selected]="task.status === TaskStatus.IN_PROGRESS">🔧 В процесі</option>
+      <option [value]="TaskStatus.DONE" [selected]="task.status === TaskStatus.DONE">✅ Виконано</option>
+    </select>
+  </div>
+  <button class="task-item-button edit"(click)="editTask()">Редагувати</button>
+  <button class="task-item-button delte"(click)="deleteTask(task.id)">Видалити</button>
+</div>

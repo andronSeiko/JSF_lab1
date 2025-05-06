@@ -1,0 +1,98 @@
+.task-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+
+  p {
+    margin: 4px 0;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 10px;
+
+  &:hover{
+  background-color: #cc0000
+  }
+}
+.todo {
+  color: gray;
+}
+
+.done {
+  color: green;
+}
+
+.in_progress {
+  color: orange;
+}
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  background: white;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  outline: none;
+  border-color: #555;
+}
+
+option {
+  padding: 5px;
+}
+.task-filter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  p {
+    margin: 5px;
+  }
+
+  select {
+    width: 40%;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}
+.task-item-button.edit {
+  background-color: #007bff; /* Bootstrap blue */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 10px;
+
+}
+
+.task-item-button.edit:hover {
+  background-color: #0056b3;
+}

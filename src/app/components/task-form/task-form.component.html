@@ -1,0 +1,78 @@
+<form [formGroup]="taskForm" class="task-form">
+
+  <!-- Назва -->
+  <div class="task-form-control">
+    <label for="title">Назва</label>
+    <input type="text" id="title" formControlName="title"
+           [ngClass]="{
+             'invalid': taskForm.get('title')?.invalid && taskForm.get('title')?.dirty,
+             'valid': taskForm.get('title')?.valid && taskForm.get('title')?.dirty
+           }">
+    <small class="error" *ngIf="taskForm.get('title')?.hasError('required') && taskForm.get('title')?.dirty">
+      Поле "Назва" обов'язкове для заповнення
+    </small>
+  </div>
+
+  <!-- Опис -->
+  <div class="task-form-control">
+    <label for="description">Опис</label>
+    <input type="text" id="description" formControlName="description"
+           [ngClass]="{
+             'invalid': taskForm.get('description')?.invalid && taskForm.get('description')?.dirty,
+             'valid': taskForm.get('description')?.valid && taskForm.get('description')?.dirty
+           }">
+    <small class="error" *ngIf="taskForm.get('description')?.hasError('forbiddenWord')">
+      Вводити слова React та Vue заборонено
+    </small>
+  </div>
+
+  <!-- Дата -->
+  <div class="task-form-control">
+    <label for="dueDate">Дата дедлайну</label>
+    <input type="date" id="dueDate" formControlName="dueDate"
+           [ngClass]="{
+             'invalid': taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.dirty,
+             'valid': taskForm.get('dueDate')?.valid && taskForm.get('dueDate')?.dirty
+           }">
+    <small class="error" *ngIf="taskForm.get('dueDate')?.hasError('required') && taskForm.get('dueDate')?.dirty">
+      Поле "Дата дедлайну" обов'язкове для заповнення
+    </small>
+    <small class="error" *ngIf="taskForm.get('dueDate')?.hasError('dateVal')">
+      Рік не може бути меншим за поточний
+    </small>
+  </div>
+
+  <!-- Виконавець -->
+  <div class="task-form-control">
+    <label for="assignee">Виконавець</label>
+    <input type="text" id="assignee" formControlName="assignee"
+           [ngClass]="{
+             'invalid': taskForm.get('assignee')?.invalid && taskForm.get('assignee')?.dirty,
+             'valid': taskForm.get('assignee')?.valid && taskForm.get('assignee')?.dirty
+           }">
+    <small class="error" *ngIf="taskForm.get('assignee')?.hasError('required') && taskForm.get('assignee')?.dirty">
+      Поле "Виконавець" обов'язкове для заповнення
+    </small>
+  </div>
+
+  <!-- Статус -->
+  <div class="task-form-control">
+    <label for="status">Статус</label>
+    <select id="status" formControlName="status"
+            [ngClass]="{
+              'invalid': taskForm.get('status')?.invalid && taskForm.get('status')?.dirty,
+              'valid': taskForm.get('status')?.valid && taskForm.get('status')?.dirty
+            }">
+      <option [value]="TaskStatus.TODO">До роботи</option>
+      <option [value]="TaskStatus.IN_PROGRESS">В процесі</option>
+      <option [value]="TaskStatus.DONE">Виконано</option>
+    </select>
+    <small class="error" *ngIf="taskForm.get('status')?.hasError('required') && taskForm.get('status')?.dirty">
+      Поле "Статус" обов'язкове для заповнення
+    </small>
+  </div>
+
+  <button (click)="addTask()" type="submit" [disabled]="!taskForm.valid">
+    {{ editTask ? 'Оновити завдання' : 'Додати нове завдання' }}
+  </button>
+</form>
